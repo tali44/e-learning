@@ -21,7 +21,7 @@ load_dotenv()
 llm = ChatOpenAI(
     api_key=os.getenv("OPENROUTER_API_KEY"),
     base_url="https://openrouter.ai/api/v1",
-    model="gpt-4o-mini",
+    model="openai/gpt-5-mini",
     temperature=0.0)
 
 client = chromadb.PersistentClient(path="./chroma_db")
@@ -36,7 +36,11 @@ search_tool = SearchTool(collection)
 TOOLS = [search_tool]
 tools_node = ToolNode(TOOLS)
 llm_with_tools = llm.bind_tools(TOOLS)
-system_prompt="Du bist ein freundlicher Lern-Assistent."
+system_prompt=("Du bist ein freundlicher Lern-Assistent. Wenn du das"
+               "Such-Tool verwendest, formatiere die Quellenangaben aus den Metadaten (Feld"
+               "*metadatas* im zurückgelieferten Objekt des SearchTools"
+               "mit nummerierten Referenzen (z.B. [1]) im Text und der entsprechenden Quellenangabe"
+               "am Ende (z.B. [1] Kapitel 3. Kuchenfiltration, S. 23)")
 
 
 class GraphState(TypedDict):
@@ -60,17 +64,17 @@ app_graph = graph.compile()
 
 st.title("Lern-Bot")
 
-# Initialize messages if not already in session state
+# Initialisiere Nachrichten
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# Display the chat history (if any)
+# Zeige, die Chat-Historie an, falls es eine gibt.
 for role, content in st.session_state.messages:
-    # role should be "user" or "assistant" (fallback to assistant style if unknown)
     r = role if role in ("user", "assistant") else "assistant"
     with st.chat_message(r):
         st.write(content)
 
+# RAG-Chat auf Basis von Nutzereingaben
 if prompt := st.chat_input("Frag, für mehr Informationen!"):
     st.session_state.messages.append(("user", prompt))
     print(st.session_state.messages)
