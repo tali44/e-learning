@@ -7,7 +7,7 @@ from langchain_core.messages import SystemMessage, AnyMessage, HumanMessage, AIM
 from langchain_openai import ChatOpenAI
 from langgraph.prebuilt import ToolNode, tools_condition
 from langgraph.graph import StateGraph, END
-
+import torch
 from message_handler import MessageHandler
 from search_tool import SearchTool
 import chromadb
@@ -44,8 +44,12 @@ if "base_llm" not in st.session_state:
 if FAQ:
     if "tools_node" not in st.session_state:
         client = chromadb.PersistentClient(path="./chroma_db")
+        device = "cuda" if torch.cuda.is_available() else "cpu"
         emb = embedding_functions.SentenceTransformerEmbeddingFunction(
-            model_name="jinaai/jina-embeddings-v2-base-de")
+            model_name="jinaai/jina-embeddings-v2-base-de",
+            device=device
+        )
+        print("Using device:", device)
 
         collection = client.get_or_create_collection(
             "verfahrenstechnik",
