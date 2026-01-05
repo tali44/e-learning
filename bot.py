@@ -17,7 +17,7 @@ from operator import add
 from langchain_core.messages import AIMessage, AIMessageChunk
 
 load_dotenv()
-FAQ = True
+FAQ = False
 SYSTEM_PROMPT=("Du bist ein freundlicher Lern-Assistent. Wenn du das"
                "Such-Tool verwendest, formatiere die Quellenangaben aus den Metadaten (Feld"
                "*metadatas* im zurückgelieferten Objekt des SearchTools"
