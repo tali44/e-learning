@@ -192,3 +192,9 @@ footer{
   .nav a{padding:7px 9px}
   .card{padding:18px}
 }
+
+.bot
+{
+  display: table-cell;
+  vertical-align: middle;
+}
