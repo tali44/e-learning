@@ -1,9 +1,9 @@
-:root{
-  --brand:#314d79;           /* Blau wie im Screenshot */
+/* :root{
+  --brand:#314d79;           Blau wie im Screenshot 
   --brand-dark:#274062;
   --brand-soft:rgba(49,77,121,.10);
 
-  --bg:#f1f0f4;              /* helles Papier-Grau */
+  --bg:#f1f0f4;               helles Papier-Grau 
   --paper:#ffffff;
   --text:#1c2430;
   --muted:rgba(28,36,48,.68);
@@ -21,7 +21,7 @@ body{
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
   color:var(--text);
 
-  /* „Papier“-Background + dezente Textur */
+   „Papier“-Background + dezente Textur
   background-color:var(--bg);
   background-image:
     radial-gradient(900px 500px at 15% 10%, rgba(49,77,121,.08), transparent 55%),
@@ -36,6 +36,32 @@ header{
   z-index:1000;
   background:transparent;
   padding:14px 0 10px;
+} */
+
+:root{
+  --bg:#0f1220;
+  --card:#171a2b;
+  --text:#eef0ff;
+  --muted:rgba(238,240,255,.75);
+  --border:rgba(255,255,255,.12);
+  --shadow:0 18px 45px rgba(0,0,0,.35);
+  --radius:16px;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  background:radial-gradient(1200px 600px at 20% 0%, #1b1f3a, var(--bg));
+  color:var(--text);
+  min-height:100vh;
+}
+
+header{
+  position:sticky; top:0; z-index:1000;
+  backdrop-filter:blur(10px);
+  background:rgba(15,18,32,.75);
+  border-bottom:1px solid var(--border);
 }
 
 /* Top-Bar */
