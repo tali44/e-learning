@@ -39,6 +39,10 @@ header{
 } */
 
 :root{
+  --brand:#314d79;           /*Blau wie im Screenshot */
+  --brand-dark:#274062;
+  --brand-soft:rgba(49,77,121,.10);
+
   --bg:#0f1220;
   --card:#171a2b;
   --text:#eef0ff;
