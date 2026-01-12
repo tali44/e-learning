@@ -18,7 +18,7 @@ from langchain_core.messages import AIMessage, AIMessageChunk
 
 load_dotenv()
 FAQ = False
-SYSTEM_PROMPT=("Du bist ein freundlicher Lern-Assistent. Wenn du das"
+SYSTEM_PROMPT=("Du bist ein freundlicher Lern-Assistent. Wenn du das"  # hier muss noch nen neuer text rein
                "Such-Tool verwendest, formatiere die Quellenangaben aus den Metadaten (Feld"
                "*metadatas* im zurückgelieferten Objekt des SearchTools"
                "mit nummerierten Referenzen (z.B. [1], [2], [3]) im Text und der entsprechenden Quellenangabe"
@@ -94,7 +94,7 @@ if "app_graph" not in st.session_state:
     st.session_state.app_graph = app_graph
 
 
-st.title("Lern-Bot")
+st.title("Elisa")
 # Zeige, die Chat-Historie an, falls es eine gibt.
 for role, content in st.session_state.messages:
     r = role if role in ("user", "assistant") else "assistant"
@@ -102,7 +102,7 @@ for role, content in st.session_state.messages:
         st.write(content)
 
 # RAG-Chat auf Basis von Nutzereingaben
-if prompt := st.chat_input("Frag, für mehr Informationen!"):
+if prompt := st.chat_input("Frag, für mehr Informationen!"): # hier muss noch nen neuer text rein
     st.session_state.messages.append(("user", prompt))
     content = st.session_state.messages[-1][1]
     with st.chat_message("user"):
