@@ -104,7 +104,7 @@ main{
   color:var(--brand-dark);
 }
 
-.card p{
+.card p, ul{
   margin:0 0 12px;
   color:var(--muted);
   line-height:1.65;
