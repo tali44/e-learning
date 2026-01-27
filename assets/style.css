@@ -28,6 +28,10 @@ header{
   border-bottom:1px solid var(--border);
 }
 
+img{
+  margin-right: 10px;
+}
+
 /* Navigationsleiste */
 .nav{
   max-width:1200px;
