@@ -181,6 +181,6 @@ a{
   .card{padding:18px}
 }
 
-.quellen{
+h2 .quellen{
   color: var(--muted);
 }
