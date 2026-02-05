@@ -180,3 +180,7 @@ a{
   .nav a{padding:7px 9px}
   .card{padding:18px}
 }
+
+h2 .quellen{
+  color: var(--muted);
+}
